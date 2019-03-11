@@ -24,6 +24,7 @@ The Web interface supports the following endpoints:
  - / or /catalog or /catalog/ - to view the home page consisting of a the categories and the latest items added to the catalog
  - /catalog/<category_name>/<category_id>/items - to view the items in a category
  - /catalog/<category_name>/<item_name>/<item_id> - to view the item description
+ - /catalog/<category_name>/<item_name>/<item_id>/JSON - to view the item description in a serialized JSON format
  - /login - enable a user to log in via Google SignIn in order to manage the catalog
 
 The following endpoints are available only to the logged-in user:
