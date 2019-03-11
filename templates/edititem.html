@@ -8,13 +8,11 @@
     <form action="{{url_for('editItem',category_name=category_name, item_name=item.name,item_id=item.id)}}" method="post">
 
         <label for="name">Name:</label>
-        <input type="text" maxlength="100" name="name" value="{{item.name}}">
+        <input type="text" maxlength="100" name="name" value="{{item.name}}" required>
 
         <br><br>
         <label for="description">Description:</label>
-        <textarea maxlength="250" rows="10" name="description" placevalue="{{item.description}}">
-            {{item.description}}
-        </textarea>
+        <textarea maxlength="250" rows="10" name="description" placevalue="{{item.description}}" required="required">{{item.description}}</textarea>
 
         <br><br>
         <select required name="categories">
