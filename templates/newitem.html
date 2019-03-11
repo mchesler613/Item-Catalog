@@ -8,12 +8,11 @@
     <form action="{{url_for('createItem')}}" method="post">
 
         <label for="name">Name:</label>
-        <input type="text" maxlength="100" name="name" value="{{item.name}}" placeholder="Sample Item">
+        <input type="text" maxlength="100" name="name" value="{{item.name}}" placeholder="Sample Item" required>
 
         <br><br>
         <label for="description">Description:</label>
-        <textarea maxlength="250" rows="10" name="description" value="{{item.description}}">Sample Description
-        </textarea>
+        <textarea maxlength="250" rows="10" name="description" value="{{item.description}}" required="required">Sample Description</textarea>
 
         <br><br>
         <select required name="categories">
