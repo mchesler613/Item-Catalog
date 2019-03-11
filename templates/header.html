@@ -1,0 +1,10 @@
+<div class="box a">
+<h1> Item Catalog App </h1>
+</div>
+<div class="box b">
+{% if 'username' not in session %}
+    <a href="{{url_for('showLogin')}}"> Login </a>
+{% else %}
+    Welcome {{username}}, <a href="{{url_for('logout')}}"> Logout </a>
+{% endif %}
+</div>

@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "categories.html" %}
+
+    <div class="box d">
+    {% include "flash.html" %}
+    <h3> Latest Items </h3>
+    {% for item in latest_items %}
+        <a href="{{url_for('showItem',category_name=item['category'],item_name=item['name'], item_id=item['id'])}}">{{item['name']}}</a> ({{item['category']}})<br>
+    {% endfor %}
+
+    {% if 'username' in session %}
+    <br><br>
+    <div>
+        <a href="{{url_for('createItem')}}">Add Item</a> | 
+        <a href="{{url_for('createCategory')}}">Add Category</a>
+    </div>
+    {% endif %}
+</div>
+{% include "footer.html" %}
+{% endblock %}

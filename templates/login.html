@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    <script>
+        function start()
+        {
+            gapi.load('auth2', function()
+            {
+                auth2 = gapi.auth2.init(
+                {
+                    client_id: '67803687834-6ntoicomq2tb2b7tngrrdta9ap85relj.apps.googleusercontent.com'
+                });
+            });
+        }
+    </script>
+    <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='catalog.css')}}">
+
+</head>
+
+
+<body>  
+    <!--BEGIN  GOOGLE PLUS SIGN IN BUTTON -->
+    <div class="wrapper">
+        <div class="box c">
+            <h1> Sign In with Google</h1>
+        </div>
+        <div class="box e">
+            <button id="signinButton" class="btn btn-primary">Google Signin</button>
+        </div>
+        <div id="result" class="box d"></div>
+
+        <script>
+        $('#signinButton').click(function()
+        {
+            function signInCallback(authResult)
+            {
+                if (authResult['code'])
+                {
+                    $('#signinButton').attr('style', 'display: none');
+                    $.ajax({
+                      type: 'POST',
+                      url: '/glogin?state={{STATE}}',
+                      headers: {
+                      'X-Requested-With': 'XMLHttpRequest'
+                      },
+                      contentType: 'application/octet-stream; charset=utf-8',
+                      success:function(result)
+                      {
+                        $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                        setTimeout(function() {
+                        window.location.href = "/";
+                        }, 2000);
+                      },
+                      processData:false,
+                      data:authResult['code']
+                    });
+                }
+                else
+                {
+                    // handle error
+                    console.log('There was an error: ' + authResult['error']);
+                    $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                }
+            }
+            auth2.grantOfflineAccess().then(signInCallback);
+        });
+        </script>
+    <!--END GOOGLE PLUS SIGN IN BUTTON -->
+
+    </div>
+</body>
+
+</html>

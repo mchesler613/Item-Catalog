@@ -1,0 +1,7 @@
+<div class="box c">
+    <h3> Categories </h3>
+    {% for category in categories %}
+        <a href="{{url_for('showCategory', category_name=category.name, category_id=category.id)}}">{{category.name}}</a><br>
+    {% endfor %}
+</div>
+

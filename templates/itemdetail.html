@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="box c">
+<h3>You selected Item:</h3>
+</div>
+<div class="box d">
+    {% include "flash.html" %}
+    <h3> <a href="{{url_for('showCategory', category_name=category_name, category_id=item.category_id)}}">{{category_name}}</a>>>{{item.name}}</h3>
+        {{item.description}}
+    <br><br>
+
+    <!-- If I am logged in and I created this item -->
+    {% if 'username' in session and user_id == item.user_id %}
+    <a href="{{url_for('editItem',category_name=category_name,item_id=item.id,item_name=item.name)}}">Edit</a> |
+    <a href="{{url_for('deleteItem',category_name=category_name, item_name=item.name,item_id=item.id)}}">Delete</a>
+    <br><br>
+    {% endif %}
+</div>
+{% include "footer.html" %}
+{% endblock %}

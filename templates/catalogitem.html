@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="box c">
+    <h3> Categories </h3>
+    {% for category in categories %}
+        <a href="{{url_for('showCategory', category_name=category.name, category_id=category.id)}}">
+            {{category.name}}
+        </a><br>
+    {% endfor %}
+</div>
+    <div class="box d">
+    <h3> {{category.name}} Items ({{rows}} items)</h3>
+    {% for item in items %}
+        <a href="{{url_for('showItem', category_name=category.name, item_name=item.name, item_id = item.id)}}">
+            {{item['name']}}
+        </a><br>
+    {% endfor %}
+    <br><br>
+
+    <!-- If I am logged in and I created this category -->
+    {% if 'username' in session and user_id == category.user_id %}
+        <div>
+        <a href="{{url_for('editCategory', category_name=category.name, category_id=category.id)}}">Edit Category</a> |
+        <a href="{{url_for('deleteCategory', category_name=category.name, category_id=category.id)}}">Delete Category</a> |
+        <a href="{{url_for('addItemToCategory', category_name=category.name, category_id=category.id)}}">Add Item to Category</a>
+        </div>
+    {% endif %}
+    </div>
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="box c">
+    <h3> New Item </h3>
+</div>
+<div class="box d">
+    <form action="{{url_for('createItem')}}" method="post">
+
+        <label for="name">Name:</label>
+        <input type="text" maxlength="100" name="name" value="{{item.name}}" placeholder="Sample Item">
+
+        <br><br>
+        <label for="description">Description:</label>
+        <textarea maxlength="250" rows="10" name="description" value="{{item.description}}">Sample Description
+        </textarea>
+
+        <br><br>
+        <select required name="categories">
+            {% for category in categories %}
+                {% if category.id == category_id %}
+                    <option name="category_id" value="{{category.id}}" selected>{{category.name}}</option>
+                {% else %}
+                    <option name="category_id" value="{{category.id}}">{{category.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+</div>
+{% include "footer.html" %}
+{% endblock %}

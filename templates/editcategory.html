@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="box c">
+    <h3> Edit Category </h3>
+</div>
+<div class="box d">
+    <form action="{{url_for('editCategory',category_name=category_name, category_id=category_id)}}" method="post">
+
+        <label for="name">Name:</label>
+        <input type="text" maxlength="100" name="name" placeholder="{{category.name}}">
+
+        <br><br>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+</div>
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="box c">
+    <h3> New Category </h3>
+</div>
+<div class="box d">
+    {% include "flash.html" %}
+    <form action="{{url_for('createCategory')}}" method="post">
+
+        <label for="name">Name:</label>
+        <input type="text" maxlength="100" name="name" placeholder="None">
+
+        <br><br>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+</div>
+{% include "footer.html" %}
+{% endblock %}

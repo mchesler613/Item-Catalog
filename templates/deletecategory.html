@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="box c">
+    <h3> Delete Category</h3>
+</div>
+<div class="box d">
+    <h3> Are you sure you want to delete '{{category.name}}' and all its items?</h3>
+    <form action="{{url_for('deleteCategory',category_name=category_name, category_id=category.id)}}" method="POST">
+        <button type="submit" id="submit">Yes</button>
+    </form>
+</div>
+{% include "footer.html" %}
+{% endblock %}
