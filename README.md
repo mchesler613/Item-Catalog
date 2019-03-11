@@ -59,15 +59,15 @@ This project requires that the following files and modules be installed:
 ## Populate the database with sample data
 Run the following commands to create and populate the database **catalogwithusers.db**
 
-    python database_setup.py
-    python catalogtest.py
+    python2 database_setup.py
+    python2 catalogtest.py
 
 The sample database contains data for a catalog of clothing categories and items.
 
 ## Run the Catalog application
 Execute the following command in a terminal
 
-    python catalog.py
+    python2 catalog.py
 
 Open up your web browser (tested on both Firefox and Chrome) at this location: http://localhost:8000
 
