@@ -540,6 +540,18 @@ def showItem(category_name, item_name, item_id):
         if 'username' in login_session else "")
 
 
+@app.route(
+    '/catalog/<string:category_name>/<string:item_name>/<int:item_id>/JSON')
+def showItemJson(category_name, item_name, item_id):
+    '''
+    Show Item details based on its id in JSON format
+    '''
+    # get Item based on its id
+    item = session.query(Item).filter_by(id=item_id).one()
+
+    return jsonify(item.serialize)
+
+
 def showLatestItems(limit):
     '''
     Show only the latest [limit] Items
